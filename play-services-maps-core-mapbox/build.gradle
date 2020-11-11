@@ -20,13 +20,18 @@ apply plugin: 'kotlin-android-extensions'
 
 dependencies {
     implementation project(':play-services-api')
-    implementation("com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1") {
+    implementation("com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0-alpha.1") {
         exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-accounts'
     }
-    implementation("com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:0.8.0") {
+    implementation('com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:0.8.0') {
         exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-accounts'
     }
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20-RC'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-accounts:0.8.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-core:5.8.0-beta.2'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-geojson:5.8.0-beta.2'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:5.8.0-beta.2'
 }
 
 def execResult(...args) {
@@ -41,7 +46,7 @@ def execResult(...args) {
 def mapboxKey() {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    return properties.getProperty("mapbox.key", "invalid")
+    return properties.getProperty("mapbox.key", "pk.eyJ1IjoieHh4ZnJlZXoiLCJhIjoiY2tlNTg5NDU1MTBmMTMxcGQxNDVzNGNuZiJ9.EL9WuGONgQa_HXDam-uUlg")
 }
 
 android {
